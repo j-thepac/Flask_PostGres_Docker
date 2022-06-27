@@ -1,0 +1,14 @@
+version: "3"
+services:
+  app:
+    build: .
+    ports: [5000:5000]
+    depends_on: [pg]
+    restart: on-failure
+ 
+  pg:
+    image: postgres
+    environment: {POSTGRES_USER: name,POSTGRES_PASSWORD: pass,POSTGRES_DB: testdb}
+    restart: always
+    ports: [5432:5432]
+
